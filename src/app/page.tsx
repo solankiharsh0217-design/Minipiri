@@ -22,7 +22,7 @@ const validCodes: Record<string, string> = {
 const operators = [
   { name: "Mario Sparacia", code: "LIMEN 369", color: "blue", img: "/gallery-1.jpg" },
   { name: "Salvo Landolina", code: "AKIRA 360", color: "green", img: "/hero-bg.jpg" },
-  { name: "Chiara Zanetti", code: "ANAEL 369", color: "purple", img: "/gallery-2.jpg" }
+  { name: "Chiara Zanetti", code: "ANAEL 369", color: "purple", img: "/gallery-2.png" }
 ];
 
 export default function Home() {
@@ -308,7 +308,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative h-[60vh] md:h-[90vh] rounded-[5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] reveal-text">
-            <Image src="/gallery-2.jpg" alt="Location" fill className="object-cover transition-transform duration-[5s] hover:scale-110" />
+            <Image src="/gallery-2.png" alt="Location" fill className="object-cover transition-transform duration-[5s] hover:scale-110" />
             <div className="absolute inset-0 bg-pink-950/10 mix-blend-multiply"></div>
           </div>
         </div>
