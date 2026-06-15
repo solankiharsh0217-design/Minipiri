@@ -46,13 +46,17 @@ export default function Home() {
   return (
     <main className="antialiased selection:bg-pink-200 selection:text-pink-900">
       {/* Editorial Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 md:px-12 py-8 flex justify-between items-center ${scrolled ? 'bg-white/80 backdrop-blur-md py-6 border-b border-pink-50' : ''}`}>
-        <div className="text-3xl font-black text-pink-950 tracking-tighter uppercase italic">Minipiri</div>
-        <div className="hidden lg:flex items-center space-x-12 font-black text-[10px] tracking-[0.4em] text-pink-950 uppercase">
-          <a href="#event" className="hover:opacity-50 transition-all">L'Evento</a>
-          <a href="#operators" className="hover:opacity-50 transition-all">Operatori</a>
-          <a href="#gallery" className="hover:opacity-50 transition-all">Gallery</a>
-          <a href="#register" className="bg-pink-950 text-white px-10 py-4 rounded-none transition-all hover:bg-pink-600">Iscriviti</a>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 md:px-12 py-8 flex justify-between items-center ${scrolled ? 'bg-white/90 backdrop-blur-md py-6 border-b border-pink-50' : ''}`}>
+        <div className={`text-3xl font-black tracking-tighter uppercase italic transition-colors duration-500 ${scrolled ? 'text-pink-950' : 'text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]'}`}>
+          Minipiri
+        </div>
+        <div className={`hidden lg:flex items-center space-x-12 font-black text-[10px] tracking-[0.4em] uppercase transition-colors duration-500 ${scrolled ? 'text-pink-950/70' : 'text-white/90'}`}>
+          <a href="#event" className="hover:text-pink-600 transition-all drop-shadow-sm">L'Evento</a>
+          <a href="#operators" className="hover:text-pink-600 transition-all drop-shadow-sm">Operatori</a>
+          <a href="#gallery" className="hover:text-pink-600 transition-all drop-shadow-sm">Gallery</a>
+          <a href="#register" className={`px-10 py-4 rounded-none transition-all ${scrolled ? 'bg-pink-950 text-white hover:bg-pink-600' : 'bg-white text-pink-950 hover:bg-pink-50 shadow-xl'}`}>
+            Iscriviti
+          </a>
         </div>
       </nav>
 
