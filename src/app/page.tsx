@@ -416,11 +416,3 @@ export default function Home() {
     </main>
   );
 }
-n-colors">WhatsApp</a>
-          </div>
-          <p className="text-[10px] font-black text-pink-950/10 tracking-[1em] uppercase">© 2026 EVENTO EVOLUTIVO — TUTTI I DIRITTI RISERVATI</p>
-        </div>
-      </footer>
-    </main>
-  );
-}
