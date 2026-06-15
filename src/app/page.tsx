@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const validCodes: Record<string, string> = {
@@ -13,6 +13,13 @@ export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", code: "" });
   const [codeStatus, setCodeStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleCodeChange = (val: string) => {
     const code = val.toUpperCase().replace(/\s/g, '');
@@ -37,245 +44,187 @@ export default function Home() {
   };
 
   return (
-    <main className="antialiased selection:bg-pink-200 selection:text-pink-900 bg-[#FDF2F8]">
-      {/* Premium Floating Navigation */}
-      <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-6xl">
-        <div className="glass-card px-10 py-5 rounded-[2.5rem] flex justify-between items-center shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-white/60">
-          <div className="text-3xl font-black text-pink-700 tracking-tighter uppercase italic">Minipiri</div>
-          <div className="hidden lg:flex items-center space-x-12 font-black text-[10px] tracking-[0.3em] text-pink-950/50 uppercase">
-            <a href="#event" className="hover:text-pink-600 transition-all hover:tracking-[0.4em]">L'Evento</a>
-            <a href="#operators" className="hover:text-pink-600 transition-all hover:tracking-[0.4em]">Operatori</a>
-            <a href="#gallery" className="hover:text-pink-600 transition-all hover:tracking-[0.4em]">Gallery</a>
-            <a href="#register" className="bg-pink-600 text-white px-10 py-4 rounded-2xl shadow-lg hover:shadow-pink-200 hover:scale-105 transition-all">Iscriviti</a>
-          </div>
+    <main className="antialiased selection:bg-pink-200 selection:text-pink-900">
+      {/* Editorial Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 md:px-12 py-8 flex justify-between items-center ${scrolled ? 'bg-white/80 backdrop-blur-md py-6 border-b border-pink-50' : ''}`}>
+        <div className="text-3xl font-black text-pink-950 tracking-tighter uppercase italic">Minipiri</div>
+        <div className="hidden lg:flex items-center space-x-12 font-black text-[10px] tracking-[0.4em] text-pink-950 uppercase">
+          <a href="#event" className="hover:opacity-50 transition-all">L'Evento</a>
+          <a href="#operators" className="hover:opacity-50 transition-all">Operatori</a>
+          <a href="#gallery" className="hover:opacity-50 transition-all">Gallery</a>
+          <a href="#register" className="bg-pink-950 text-white px-10 py-4 rounded-none transition-all hover:bg-pink-600">Iscriviti</a>
         </div>
       </nav>
 
-      {/* AMAZING HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-        {/* Cinematic Background Layer */}
+      {/* FULL VIEWPORT EDITORIAL HERO */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Background Image - Full Viewport */}
         <div className="absolute inset-0 z-0">
           <Image 
             src="/hero-bg.jpg" 
             alt="Hero Background" 
             fill 
             priority
-            className="object-cover scale-110 blur-sm opacity-30"
+            className="object-cover animate-slow-zoom grayscale-[30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-pink-100/40 via-white to-yellow-50/30"></div>
-          
-          {/* Animated Light Leaks */}
-          <div className="absolute -top-[20%] -left-[10%] w-[80%] h-[80%] bg-pink-200/20 rounded-full blur-[120px] animate-light-leak"></div>
-          <div className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-yellow-100/20 rounded-full blur-[120px] animate-light-leak" style={{animationDelay: '-5s'}}></div>
+          <div className="absolute inset-0 bg-pink-950/20 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-          {/* Hero Content */}
-          <div className="text-left">
-            <div className="inline-flex items-center space-x-3 px-6 py-3 mb-10 text-[10px] font-black tracking-[0.4em] text-white uppercase bg-pink-600 rounded-full shadow-[0_10px_30px_rgba(219,39,119,0.3)] animate-bounce-slow">
-              <span>27 — 29 NOVEMBRE</span>
-            </div>
-            
-            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-[0.85] tracking-tighter text-pink-950">
-              IL TUO <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-yellow-600 italic">RISVEGLIO</span> <br/>
-              INTERIORE.
+        {/* Hero Content - Editorial Centered */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
+          <div className="overflow-hidden mb-6">
+            <span className="block text-white text-[12px] font-black tracking-[0.6em] uppercase animate-reveal [animation-delay:0.2s]">
+              27 — 29 Novembre 2026
+            </span>
+          </div>
+          
+          <div className="overflow-hidden mb-8">
+            <h1 className="text-7xl md:text-[12rem] font-black leading-[0.8] tracking-tighter text-white uppercase italic animate-reveal [animation-delay:0.4s]">
+              Evoluzione
             </h1>
-            
-            <div className="flex items-center space-x-6 mb-12">
-              <div className="w-20 h-[2px] bg-pink-200"></div>
-              <p className="text-xl md:text-2xl text-pink-900/40 font-bold uppercase tracking-widest leading-none">
-                PC Location <span className="text-pink-600">Minipiri</span>
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-6">
-              <a href="#register" className="group relative bg-pink-950 text-white px-14 py-8 rounded-[2rem] text-xl font-black overflow-hidden transition-all hover:scale-105 shadow-2xl">
-                <span className="relative z-10">PARTECIPA ORA</span>
-                <div className="absolute inset-0 bg-pink-600 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500"></div>
-              </a>
-              <a href="#event" className="px-14 py-8 rounded-[2rem] text-xl font-black border-2 border-pink-100 text-pink-900 hover:bg-pink-50 transition-all">
-                SCOPRI DI PIÙ
-              </a>
-            </div>
           </div>
 
-          {/* Hero Visual Focal Point */}
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-square animate-float">
-              {/* Decorative Rings */}
-              <div className="absolute inset-0 border-2 border-pink-100 rounded-full scale-110 opacity-50"></div>
-              <div className="absolute inset-0 border-2 border-pink-50 rounded-full scale-125 opacity-30 animate-pulse"></div>
-              
-              {/* Main Image Container */}
-              <div className="relative w-full h-full rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.15)] transform rotate-3 hover:rotate-0 transition-all duration-700">
-                <Image 
-                  src="/hero-bg.jpg" 
-                  alt="MINIPIRI Location" 
-                  fill 
-                  className="object-cover scale-125 hover:scale-100 transition-transform duration-[2s]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-pink-950/40 to-transparent"></div>
-              </div>
-
-              {/* Floating Badge */}
-              <div className="absolute -bottom-10 -left-10 glass-card p-10 rounded-[3rem] shadow-2xl animate-bounce-slow">
-                <p className="text-5xl font-black text-pink-600 leading-none mb-2">3</p>
-                <p className="text-[10px] font-black tracking-widest text-pink-900/40 uppercase">Giorni di<br/>Trasformazione</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-          <span className="text-[10px] font-black tracking-[0.5em] uppercase text-pink-950">SCROLL</span>
-          <div className="w-[1px] h-20 bg-gradient-to-b from-pink-950 to-transparent"></div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section id="gallery" className="py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-end mb-32">
-            <div>
-              <span className="text-pink-600 font-black tracking-[0.5em] uppercase text-[10px] mb-6 block">01 / Atmosfera</span>
-              <h2 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.8] text-pink-950">SPIRITO <br/><span className="text-pink-200 italic">MAGICO</span></h2>
-            </div>
-            <p className="text-2xl text-pink-900/50 font-medium leading-relaxed max-w-md">Un luogo dove il tempo si ferma e l'anima ricomincia a respirare.</p>
+          <div className="overflow-hidden mb-12">
+            <p className="text-xl md:text-3xl text-white font-medium uppercase tracking-[0.2em] animate-reveal [animation-delay:0.6s]">
+              PC Location <span className="font-black italic">Minipiri</span>
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-[900px]">
-            <div className="md:col-span-7 relative rounded-[4rem] overflow-hidden group shadow-2xl">
-              <Image src="/gallery-1.jpg" alt="Atmosfera 1" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-pink-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-            <div className="md:col-span-5 grid grid-rows-2 gap-8">
-              <div className="relative rounded-[3rem] overflow-hidden group shadow-xl">
-                <Image src="/gallery-2.jpg" alt="Atmosfera 2" fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-              </div>
-              <div className="bg-pink-600 rounded-[3rem] p-16 flex flex-col justify-center text-white shadow-2xl relative overflow-hidden group">
-                <div className="relative z-10">
-                  <h3 className="text-4xl font-black mb-6 leading-tight uppercase tracking-tighter italic">PC Location <br/>Minipiri</h3>
-                  <p className="text-pink-100 text-lg font-bold leading-relaxed opacity-80">L'eccellenza dell'ospitalità incontra la profondità dell'esperienza evolutiva.</p>
-                </div>
-                <div className="absolute -bottom-10 -right-10 text-[15rem] font-black italic opacity-10 group-hover:scale-110 transition-transform">!</div>
-              </div>
+          <div className="animate-reveal [animation-delay:0.8s] flex flex-col items-center">
+            <a href="#register" className="group relative px-20 py-8 bg-white text-pink-950 font-black text-xl tracking-[0.3em] transition-all hover:scale-110 active:scale-95">
+              PARTECIPA
+            </a>
+            <div className="mt-12 animate-bounce opacity-50">
+               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Operators Section */}
-      <section id="operators" className="py-40 bg-[#FDF2F8]">
+      {/* The Vision - Pure Editorial Section */}
+      <section id="event" className="py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-32 items-center">
+          <div className="relative aspect-[3/4] overflow-hidden shadow-2xl">
+            <Image src="/gallery-1.jpg" alt="Vision" fill className="object-cover grayscale" />
+          </div>
+          <div className="space-y-12">
+            <span className="text-pink-600 font-black tracking-[0.5em] uppercase text-[10px]">L'Essenza</span>
+            <h2 className="text-7xl font-black text-pink-950 leading-[0.9] tracking-tighter uppercase italic">Oltre il <br/>Visibile.</h2>
+            <p className="text-xl text-pink-900/60 leading-relaxed font-medium">
+              Tre giorni dedicati alla riscoperta del proprio centro interiore. In una cornice di lusso e silenzio, i maestri ti guideranno in un percorso di trasformazione profonda.
+            </p>
+            <div className="pt-8">
+              <a href="#register" className="btn-editorial">Scopri il programma</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery - Editorial Masonry */}
+      <section id="gallery" className="py-20 bg-pink-50/20">
+        <div className="max-w-screen-2xl mx-auto px-6">
+           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+              <div className="md:col-span-4 space-y-6 flex flex-col justify-center">
+                 <h2 className="text-8xl font-black tracking-tighter text-pink-950 uppercase italic leading-none">Lo <br/>Spazio.</h2>
+                 <p className="text-pink-900/40 text-sm font-black tracking-widest uppercase">PC Location Minipiri</p>
+              </div>
+              <div className="md:col-span-8 relative aspect-video md:aspect-auto h-[600px] overflow-hidden shadow-2xl">
+                 <Image src="/gallery-2.jpg" alt="The Place" fill className="object-cover" />
+                 <div className="absolute inset-0 bg-pink-950/10"></div>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      {/* Operators - Portrait Style */}
+      <section id="operators" className="py-40 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-32">
-            <span className="text-pink-600 font-black tracking-[0.5em] uppercase text-[10px] mb-6 block">02 / Guide</span>
-            <h2 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.8] text-pink-950 uppercase italic">Maestri</h2>
+          <div className="mb-32 text-center md:text-left">
+            <h2 className="text-9xl font-black tracking-tighter text-pink-950 uppercase italic leading-none">I Maestri</h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-20">
+          <div className="grid md:grid-cols-3 gap-24">
             {[
-              { name: "Mario Sparacia", code: "LIMEN 369", color: "bg-blue-600", icon: "🔵" },
-              { name: "Salvo Landolina", code: "AKIRA 360", color: "bg-green-600", icon: "🟢" },
-              { name: "Chiara Zanetti", code: "ANAEL 369", color: "bg-purple-600", icon: "🟣" }
+              { name: "Mario Sparacia", code: "LIMEN 369", icon: "🔵", color: "text-blue-600" },
+              { name: "Salvo Landolina", code: "AKIRA 360", icon: "🟢", color: "text-green-600" },
+              { name: "Chiara Zanetti", code: "ANAEL 369", icon: "🟣", color: "text-purple-600" }
             ].map((op, i) => (
-              <div key={i} className="group relative">
-                <div className="relative aspect-[3/4] rounded-[4rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover:-translate-y-6 group-hover:rotate-2">
-                  <div className="absolute inset-0 bg-pink-100 flex items-center justify-center">
-                    <span className="text-[12rem] opacity-10 group-hover:opacity-30 transition-all grayscale group-hover:grayscale-0">{op.icon}</span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-950/80 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-12">
-                    <div className={`${op.color} w-12 h-1 mb-6 rounded-full group-hover:w-full transition-all duration-700`}></div>
-                    <p className="text-white/40 font-black text-xs tracking-[0.3em] uppercase mb-4">{op.code}</p>
-                    <h3 className="text-4xl font-black text-white leading-none uppercase tracking-tighter italic">{op.name}</h3>
-                  </div>
+              <div key={i} className="group">
+                <div className="relative aspect-[3/5] overflow-hidden mb-12 bg-pink-50 grayscale hover:grayscale-0 transition-all duration-700 shadow-xl group-hover:shadow-2xl">
+                   <div className="absolute inset-0 flex items-center justify-center text-[10rem] opacity-20 group-hover:scale-110 transition-transform">{op.icon}</div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-pink-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
+                <p className={`font-black text-[10px] tracking-[0.4em] mb-4 uppercase ${op.color}`}>{op.code}</p>
+                <h3 className="text-4xl font-black text-pink-950 uppercase tracking-tighter italic">{op.name}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* REGISTRATION SECTION */}
-      <section id="register" className="py-40 relative bg-pink-950 overflow-hidden">
-        <div className="absolute inset-0 opacity-20 scale-150 blur-xl">
-          <Image src="/hero-bg.jpg" alt="Register BG" fill className="object-cover" />
-        </div>
-        
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="bg-white p-12 md:p-24 rounded-[5rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)]">
+      {/* Final Call - Minimalist */}
+      <section id="register" className="py-40 bg-pink-950 overflow-hidden relative">
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <div className="bg-white p-12 md:p-32 text-center shadow-[0_100px_150px_-50px_rgba(0,0,0,0.8)]">
             {!isSubmitted ? (
               <>
-                <div className="text-center mb-20">
-                  <h2 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter text-pink-950 uppercase italic leading-none">Inizia il <br/><span className="text-pink-600">Viaggio</span></h2>
-                  <p className="text-pink-900/40 font-black tracking-widest uppercase text-sm">Posti strettamente limitati</p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-10">
-                  <div className="grid md:grid-cols-2 gap-10">
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-900/30 ml-8">Nome Completo</label>
-                      <input 
-                        type="text" required value={formData.name}
-                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                        className="w-full px-10 py-8 rounded-[2.5rem] bg-pink-50/50 border-none ring-2 ring-pink-100 focus:ring-pink-600 focus:bg-white transition-all text-xl font-bold text-pink-950 outline-none" 
-                        placeholder="MARIO ROSSI" 
-                      />
-                    </div>
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-900/30 ml-8">E-mail</label>
-                      <input 
-                        type="email" required value={formData.email}
-                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full px-10 py-8 rounded-[2.5rem] bg-pink-50/50 border-none ring-2 ring-pink-100 focus:ring-pink-600 focus:bg-white transition-all text-xl font-bold text-pink-950 outline-none" 
-                        placeholder="EMAIL@ESEMPIO.IT" 
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-pink-900/30 text-center block">Codice Operatore Riservato</label>
+                <h2 className="text-6xl md:text-8xl font-black mb-16 tracking-tighter text-pink-950 uppercase italic leading-none">Riserva <br/>il tuo <br/>Posto.</h2>
+                
+                <form onSubmit={handleSubmit} className="space-y-12 text-left">
+                  <div className="space-y-8">
                     <input 
-                      type="text" required value={formData.code}
-                      onChange={(e) => handleCodeChange(e.target.value)}
-                      className={`w-full px-10 py-10 rounded-[2.5rem] border-none ring-4 text-4xl font-black tracking-[0.5em] text-center uppercase transition-all ${
-                        codeStatus.type === 'success' ? 'ring-green-400 bg-green-50 text-green-900' : codeStatus.type === 'error' ? 'ring-red-400 bg-red-50 text-red-900' : 'ring-pink-100 bg-pink-50/50 text-pink-950'
-                      } outline-none`} 
-                      placeholder="••••••" 
+                      type="text" required placeholder="NOME COMPLETO"
+                      value={formData.name} onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      className="w-full bg-transparent border-b-2 border-pink-100 py-6 text-2xl font-black text-pink-950 outline-none focus:border-pink-600 transition-all placeholder:text-pink-100" 
                     />
-                    {codeStatus.message && (
-                      <p className={`text-xs mt-6 text-center font-black uppercase tracking-[0.2em] ${codeStatus.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
-                        {codeStatus.message}
-                      </p>
-                    )}
+                    <input 
+                      type="email" required placeholder="EMAIL"
+                      value={formData.email} onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      className="w-full bg-transparent border-b-2 border-pink-100 py-6 text-2xl font-black text-pink-950 outline-none focus:border-pink-600 transition-all placeholder:text-pink-100" 
+                    />
+                    <div className="space-y-4">
+                       <label className="text-[10px] font-black tracking-[0.4em] opacity-30 uppercase block">Codice Operatore</label>
+                       <input 
+                        type="text" required placeholder="••••••"
+                        value={formData.code} onChange={(e) => handleCodeChange(e.target.value)}
+                        className={`w-full bg-transparent border-b-2 py-6 text-5xl font-black tracking-[0.4em] text-pink-950 outline-none transition-all placeholder:text-pink-100 ${
+                          codeStatus.type === 'success' ? 'border-green-400 text-green-700' : codeStatus.type === 'error' ? 'border-red-400 text-red-700' : 'border-pink-100'
+                        }`} 
+                      />
+                      {codeStatus.message && (
+                        <p className={`text-[10px] font-black uppercase tracking-widest ${codeStatus.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                          {codeStatus.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
-                  <button type="submit" className="w-full bg-pink-600 text-white py-10 rounded-[2.5rem] text-3xl font-black shadow-[0_30px_60px_rgba(219,39,119,0.4)] hover:scale-[1.02] active:scale-95 transition-all mt-10 uppercase italic tracking-tighter">
-                    CONFERMA ORA
+                  <button type="submit" className="w-full bg-pink-950 text-white py-10 text-3xl font-black tracking-tighter hover:bg-pink-600 transition-all uppercase italic">
+                    Conferma Iscrizione
                   </button>
                 </form>
               </>
             ) : (
-              <div className="text-center py-20">
-                <div className="w-40 h-40 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-12 shadow-inner">
-                  <svg className="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <h3 className="text-7xl font-black mb-8 tracking-tighter text-pink-950 uppercase italic">ECCELLENTE!</h3>
-                <p className="text-2xl text-pink-900/40 font-bold max-w-sm mx-auto leading-tight uppercase">Ci vediamo a <br/>Novembre.</p>
-                <button onClick={() => setIsSubmitted(false)} className="mt-16 text-pink-600 font-black uppercase tracking-[0.3em] text-[10px] hover:underline">NUOVA ISCRIZIONE</button>
+              <div className="py-20">
+                <h3 className="text-8xl font-black text-pink-950 italic mb-8 uppercase leading-none tracking-tighter">Benvenuto.</h3>
+                <p className="text-xl font-bold text-pink-900/40 uppercase tracking-widest">Controlla la tua e-mail.</p>
+                <button onClick={() => setIsSubmitted(false)} className="mt-20 text-[10px] font-black tracking-[0.5em] text-pink-600 hover:underline uppercase">Indietro</button>
               </div>
             )}
           </div>
         </div>
       </section>
 
-      <footer className="py-32 bg-white text-center">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-5xl font-black text-pink-950 mb-10 tracking-tighter uppercase italic">Minipiri</div>
-          <div className="w-10 h-1 bg-pink-100 mx-auto mb-10"></div>
-          <p className="text-pink-900/20 font-black text-[10px] tracking-[0.8em] uppercase">© 2026 EVENTO EVOLUTIVO — TUTTI I DIRITTI RISERVATI</p>
+      <footer className="py-20 bg-white border-t border-pink-50">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+          <div className="text-4xl font-black text-pink-950 tracking-tighter uppercase italic">Minipiri</div>
+          <div className="flex gap-12 text-[10px] font-black tracking-[0.4em] text-pink-950 uppercase opacity-30">
+             <a href="#" className="hover:opacity-100">Instagram</a>
+             <a href="#" className="hover:opacity-100">Facebook</a>
+             <a href="#" className="hover:opacity-100">Contact</a>
+          </div>
+          <p className="text-[10px] font-black tracking-[0.4em] text-pink-900/20 uppercase">© 2026 MINIPIRI</p>
         </div>
       </footer>
     </main>
