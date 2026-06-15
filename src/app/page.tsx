@@ -116,7 +116,7 @@ export default function Home() {
           animate={{ opacity: 1, x: 0 }}
           className={`text-2xl md:text-4xl font-black tracking-tighter uppercase italic transition-colors duration-500 ${scrolled ? 'text-pink-950' : 'text-white'}`}
         >
-          Minipiri
+          Alchimisti
         </motion.div>
 
         <div className="hidden lg:flex items-center space-x-12">
@@ -155,7 +155,7 @@ export default function Home() {
             className="fixed inset-0 bg-pink-950/98 backdrop-blur-3xl z-[200] p-12 flex flex-col justify-between"
           >
             <div className="flex justify-between items-center">
-              <span className="text-white text-3xl font-black italic uppercase tracking-tighter">Minipiri</span>
+              <span className="text-white text-3xl font-black italic uppercase tracking-tighter">Alchimisti</span>
               <button onClick={() => setMobileMenuOpen(false)} className="text-white p-2 bg-white/10 rounded-full"><X className="w-10 h-10" /></button>
             </div>
             <div className="flex flex-col space-y-6">
@@ -172,7 +172,7 @@ export default function Home() {
                 </motion.a>
               ))}
             </div>
-            <div className="text-white/20 font-black tracking-[0.5em] text-[10px] uppercase">PC Location Minipiri — 2026</div>
+            <div className="text-white/20 font-black tracking-[0.5em] text-[10px] uppercase">PC Location Alchimisti — 2026</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -212,7 +212,7 @@ export default function Home() {
             transition={{ delay: 1.5 }}
             className="text-2xl md:text-4xl text-white/70 font-bold uppercase tracking-[0.3em] mb-16"
           >
-            PC Location <span className="text-white font-black italic">Minipiri</span>
+            PC Location <span className="text-white font-black italic">Alchimisti</span>
           </motion.p>
 
           <motion.div 
@@ -303,7 +303,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-10 reveal-text">
             <h2 className="text-8xl md:text-[12rem] font-black tracking-tighter text-pink-950 uppercase italic leading-none">La <br/>Dimora.</h2>
             <div className="text-right">
-               <p className="text-2xl text-pink-600 font-black uppercase tracking-[0.3em] mb-4">PC Location Minipiri</p>
+               <p className="text-2xl text-pink-600 font-black uppercase tracking-[0.3em] mb-4">PC Location Alchimisti</p>
                <div className="w-20 h-1 bg-pink-200 ml-auto"></div>
             </div>
           </div>
@@ -403,7 +403,7 @@ export default function Home() {
 
       <footer className="py-32 bg-white text-center">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
-          <div className="text-5xl font-black text-pink-950 italic uppercase tracking-tighter">Minipiri</div>
+          <div className="text-5xl font-black text-pink-950 italic uppercase tracking-tighter">Alchimisti</div>
           <div className="w-20 h-[1px] bg-pink-100 mx-auto"></div>
           <div className="flex justify-center space-x-20 text-[11px] font-black uppercase tracking-[0.5em] text-pink-950/30">
             <a href="#" className="hover:text-pink-600 transition-colors">Instagram</a>
