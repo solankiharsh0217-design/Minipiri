@@ -323,51 +323,51 @@ export default function Home() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square border-[1px] border-white/5 rounded-full"
         />
         
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            className="bg-white p-12 md:p-32 rounded-[6rem] shadow-[0_100px_200px_rgba(0,0,0,0.4)]"
+            className="bg-white p-10 md:p-20 rounded-[4rem] shadow-[0_50px_100px_rgba(0,0,0,0.4)]"
           >
             {!isSubmitted ? (
-              <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-24">
-                  <h2 className="text-7xl md:text-[9rem] font-black mb-10 tracking-tighter text-pink-950 uppercase italic leading-none">Unisciti <br/>A Noi.</h2>
-                  <p className="text-pink-900/30 font-black tracking-[0.5em] uppercase text-sm">Richiesta Di Iscrizione Riservata</p>
+              <div className="max-w-2xl mx-auto">
+                <div className="text-center mb-16">
+                  <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter text-pink-950 uppercase italic leading-none">Unisciti <br/>A Noi.</h2>
+                  <p className="text-pink-900/30 font-black tracking-[0.5em] uppercase text-[10px]">Richiesta Di Iscrizione Riservata</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-16">
-                  <div className="grid md:grid-cols-2 gap-16 text-left">
-                    <div className="space-y-6">
-                      <label className="text-[11px] font-black tracking-[0.4em] opacity-30 uppercase ml-10">Nome e Cognome</label>
+                <form onSubmit={handleSubmit} className="space-y-10">
+                  <div className="grid md:grid-cols-2 gap-8 text-left">
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black tracking-[0.3em] opacity-30 uppercase ml-6">Nome Completo</label>
                       <input 
-                        type="text" required placeholder="Inserisci il tuo nome"
+                        type="text" required placeholder="Il tuo nome"
                         value={formData.name} onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                        className="w-full bg-pink-50/50 px-12 py-10 rounded-full font-black text-xl text-pink-950 outline-none ring-2 ring-transparent focus:ring-pink-600 transition-all placeholder:opacity-20" 
+                        className="w-full bg-pink-50/50 px-8 py-6 rounded-full font-bold text-lg text-pink-950 outline-none ring-2 ring-transparent focus:ring-pink-600 transition-all placeholder:opacity-20" 
                       />
                     </div>
-                    <div className="space-y-6">
-                      <label className="text-[11px] font-black tracking-[0.4em] opacity-30 uppercase ml-10">Indirizzo E-mail</label>
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black tracking-[0.3em] opacity-30 uppercase ml-6">E-mail</label>
                       <input 
                         type="email" required placeholder="latua@email.it"
                         value={formData.email} onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                        className="w-full bg-pink-50/50 px-12 py-10 rounded-full font-black text-xl text-pink-950 outline-none ring-2 ring-transparent focus:ring-pink-600 transition-all placeholder:opacity-20" 
+                        className="w-full bg-pink-50/50 px-8 py-6 rounded-full font-bold text-lg text-pink-950 outline-none ring-2 ring-transparent focus:ring-pink-600 transition-all placeholder:opacity-20" 
                       />
                     </div>
                   </div>
                   
-                  <div className="space-y-6 text-center">
-                    <label className="text-[11px] font-black tracking-[0.4em] opacity-30 uppercase">Codice Invito Riservato</label>
+                  <div className="space-y-4 text-center">
+                    <label className="text-[10px] font-black tracking-[0.3em] opacity-30 uppercase">Codice Invito</label>
                     <input 
                       type="text" required placeholder="••••••"
                       value={formData.code} onChange={(e) => handleCodeChange(e.target.value)}
-                      className={`w-full bg-pink-50 px-12 py-12 rounded-full text-5xl md:text-8xl font-black text-center tracking-[0.5em] outline-none ring-4 transition-all ${
+                      className={`w-full bg-pink-50 px-8 py-8 rounded-full text-4xl md:text-6xl font-black text-center tracking-[0.3em] outline-none ring-4 transition-all ${
                         codeStatus.type === 'success' ? 'ring-green-400 text-green-700' : codeStatus.type === 'error' ? 'ring-red-400 text-red-700' : 'ring-pink-100'
                       }`} 
                     />
                     {codeStatus.message && (
-                      <p className={`text-center font-black uppercase text-sm tracking-[0.3em] mt-10 ${codeStatus.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                      <p className={`text-center font-black uppercase text-[11px] tracking-widest mt-6 ${codeStatus.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
                         {codeStatus.message}
                       </p>
                     )}
@@ -377,9 +377,9 @@ export default function Home() {
                     whileHover={{ scale: 1.02, backgroundColor: "#9D174D" }}
                     whileTap={{ scale: 0.98 }}
                     type="submit" 
-                    className="w-full bg-pink-600 text-white py-12 rounded-full text-4xl font-black shadow-[0_40px_80px_rgba(219,39,119,0.4)] uppercase italic tracking-tighter"
+                    className="w-full bg-pink-600 text-white py-8 rounded-full text-2xl font-black shadow-xl shadow-pink-200/50 uppercase italic tracking-tighter"
                   >
-                    Conferma Iscrizione
+                    Conferma
                   </motion.button>
                 </form>
               </div>
@@ -409,6 +409,14 @@ export default function Home() {
             <a href="#" className="hover:text-pink-600 transition-colors">Instagram</a>
             <a href="#" className="hover:text-pink-600 transition-colors">Facebook</a>
             <a href="#" className="hover:text-pink-600 transition-colors">WhatsApp</a>
+          </div>
+          <p className="text-[10px] font-black text-pink-950/10 tracking-[1em] uppercase">© 2026 EVENTO EVOLUTIVO — TUTTI I DIRITTI RISERVATI</p>
+        </div>
+      </footer>
+    </main>
+  );
+}
+n-colors">WhatsApp</a>
           </div>
           <p className="text-[10px] font-black text-pink-950/10 tracking-[1em] uppercase">© 2026 EVENTO EVOLUTIVO — TUTTI I DIRITTI RISERVATI</p>
         </div>
