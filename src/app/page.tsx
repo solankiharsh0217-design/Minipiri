@@ -133,7 +133,7 @@ export default function Home() {
           href="#"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className={`text-2xl md:text-3xl font-black tracking-tighter uppercase italic ${scrolled ? 'text-pink-950' : 'text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]'}`}
+          className={`text-2xl md:text-3xl font-black tracking-tighter uppercase italic ${scrolled ? '!text-pink-950' : '!text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]'}`}
         >
           Alchimisti
         </motion.a>
@@ -143,8 +143,8 @@ export default function Home() {
             <motion.a 
               key={item}
               href={`#${item.toLowerCase().replace(" ", "").replace("l'", "")}`}
-              whileHover={{ scale: 1.1, color: "#DB2777" }}
-              className={`text-[12px] font-black tracking-[0.4em] uppercase ${scrolled ? 'text-pink-950/80 hover:text-pink-600' : 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:text-pink-300'}`}
+              whileHover={{ scale: 1.1 }}
+              className={`text-[12px] font-black tracking-[0.4em] uppercase ${scrolled ? '!text-pink-950/80 hover:!text-pink-600' : '!text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:!text-pink-300'}`}
             >
               {item}
             </motion.a>
@@ -153,13 +153,13 @@ export default function Home() {
             href="#register" 
             whileHover={{ scale: 1.05, backgroundColor: "#9D174D" }}
             whileTap={{ scale: 0.95 }}
-            className={`px-10 py-4 font-black text-[12px] uppercase tracking-widest rounded-full ${scrolled ? 'bg-pink-950 text-white shadow-xl hover:bg-pink-800' : 'bg-white text-pink-950 shadow-2xl hover:bg-pink-100'}`}
+            className={`px-10 py-4 font-black text-[12px] uppercase tracking-widest rounded-full ${scrolled ? 'bg-pink-950 !text-white shadow-xl hover:bg-pink-800' : 'bg-white !text-pink-950 shadow-2xl hover:bg-pink-100'}`}
           >
             Iscriviti
           </motion.a>
         </div>
 
-        <button onClick={() => setMobileMenuOpen(true)} className={`lg:hidden p-2 rounded-full ${scrolled ? 'text-pink-950 bg-pink-50 hover:bg-pink-100' : 'text-white bg-black/20 backdrop-blur-md shadow-lg hover:bg-black/30'}`}>
+        <button onClick={() => setMobileMenuOpen(true)} className={`lg:hidden p-2 rounded-full ${scrolled ? '!text-pink-950 bg-pink-50 hover:bg-pink-100' : '!text-white bg-black/20 backdrop-blur-md shadow-lg hover:bg-black/30'}`}>
           <Menu className="w-8 h-8" />
         </button>
       </nav>
