@@ -212,7 +212,7 @@ export default function Home() {
             transition={{ delay: 1.5 }}
             className="text-2xl md:text-4xl text-white/70 font-bold uppercase tracking-[0.3em] mb-16"
           >
-            PC Location <span className="text-white font-black italic">Alchimisti</span>
+            PC Location <span className="text-white font-black italic">Minipiri</span>
           </motion.p>
 
           <motion.div 

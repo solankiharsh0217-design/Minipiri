@@ -14,7 +14,7 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: "ALCHIMISTI Event - 27-29 Novembre",
-  description: "Esperienza Evolutiva PC Location ALCHIMISTI",
+  description: "Esperienza Evolutiva PC Location MINIPIRI",
 };
 
 export default function RootLayout({
