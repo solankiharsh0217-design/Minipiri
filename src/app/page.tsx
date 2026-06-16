@@ -7,6 +7,7 @@ import { ChevronDown, CheckCircle, Menu, X, ArrowRight, Star } from "lucide-reac
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
+import ContactForm from "@/components/ContactForm";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -525,6 +526,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* CONTACT FORM */}
+      <ContactForm />
 
       <footer className="py-24 md:py-32 bg-white text-center">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
