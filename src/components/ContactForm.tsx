@@ -16,7 +16,7 @@ export default function ContactForm() {
     setErrorMsg("");
 
     const form = new FormData();
-    form.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
+    form.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "M7LEXbASqH8SCpm");
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("message", formData.message);
