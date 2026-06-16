@@ -21,25 +21,25 @@ const validCodes: Record<string, string> = {
 
 const operators = [
   { 
+    name: "Chiara Zanetti", 
+    code: "ANAEL 369", 
+    color: "purple", 
+    img: "/gallery-1.jpg",
+    desc: "Armonia e luce. Chiara incarna la perfetta integrazione tra rigore professionale, lavoro sull'energia sottile e un accompagnamento trasformativo dolce ma potente verso la nuova consapevolezza."
+  },
+  { 
     name: "Mario Sparacia", 
     code: "LIMEN 369", 
     color: "blue", 
-    img: "/gallery-1.jpg",
+    img: "/hero-bg.jpg",
     desc: "Una presenza autorevole ed empatica. Mario offre una guida profonda e centrata, creando uno spazio di assoluta sicurezza dove poter esplorare le memorie dell'anima con fiducia e saggezza."
   },
   { 
     name: "Salvo Landolina", 
     code: "AKIRA 360", 
     color: "green", 
-    img: "/hero-bg.jpg",
-    desc: "Il custode del radicamento. Attraverso la sua forte connessione spirituale e una profonda sensibilità olistica, Salvo ti aiuterà ad ancorare l'energia e a ritrovare il contatto con l'essenza terrestre."
-  },
-  { 
-    name: "Chiara Zanetti", 
-    code: "ANAEL 369", 
-    color: "purple", 
     img: "/gallery-2.png",
-    desc: "Armonia e luce. Chiara incarna la perfetta integrazione tra rigore professionale, lavoro sull'energia sottile e un accompagnamento trasformativo dolce ma potente verso la nuova consapevolezza."
+    desc: "Il custode del radicamento. Attraverso la sua forte connessione spirituale e una profonda sensibilità olistica, Salvo ti aiuterà ad ancorare l'energia e a ritrovare il contatto con l'essenza terrestre."
   }
 ];
 
