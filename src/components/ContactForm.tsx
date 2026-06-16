@@ -8,9 +8,12 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMsg("");
 
     const form = new FormData();
     form.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "");
@@ -32,12 +35,14 @@ export default function ContactForm() {
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setStatus("idle"), 4000);
       } else {
+        setErrorMsg(data.message || "Submission failed");
         setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
+        setTimeout(() => setStatus("idle"), 5000);
       }
-    } catch {
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Network error");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
+      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
@@ -110,7 +115,7 @@ export default function ContactForm() {
                 {status === "error" && (
                   <div className="flex items-center justify-center gap-3 text-red-500">
                     <AlertCircle className="w-5 h-5" />
-                    <span className="text-sm font-bold">Qualcosa è andato storto. Riprova.</span>
+                    <span className="text-sm font-bold">{errorMsg || "Qualcosa è andato storto. Riprova."}</span>
                   </div>
                 )}
 
